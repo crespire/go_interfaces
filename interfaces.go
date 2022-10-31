@@ -20,23 +20,23 @@ type CarEngine struct {
 	isOn                                                     bool
 }
 
-func (c CarEngine) turnOn() {
+func (c *CarEngine) turnOn() {
 	c.isOn = true
 }
 
-func (c CarEngine) turnOff() {
+func (c *CarEngine) turnOff() {
 	c.isOn = false
 }
 
-func (c CarEngine) engineOn() bool {
+func (c *CarEngine) engineOn() bool {
 	return c.isOn
 }
 
-func (c CarEngine) getCurrentRPM() int {
+func (c *CarEngine) getCurrentRPM() int {
 	return c.currentRPM
 }
 
-func (c CarEngine) getCurrentTorque() int {
+func (c *CarEngine) getCurrentTorque() int {
 	return c.currentTorque
 }
 
@@ -51,5 +51,7 @@ func main() {
 	civicEngine := CarEngine{horsePower: 300, maxRPM: 3000, maxTorque: 581}
 	civic := car{civicEngine, "Birdy"}
 	fmt.Println(civic.name)
+	fmt.Println(civic.engineOn())
+	civic.turnOn()
 	fmt.Println(civic.engineOn())
 }
